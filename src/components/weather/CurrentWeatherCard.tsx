@@ -2,7 +2,7 @@ import { MapPin, Sun } from "lucide-react";
 
 const CurrentWeatherCard = () => {
   return (
-    <section className="flex flex-col items-center gap-3 mt-16">
+    <section className="flex flex-col items-center gap-3 mt-6">
       {/* location */}
       <p className="flex items-center gap-2 text-sm text-gray-600">
         <MapPin className="size-4" />
