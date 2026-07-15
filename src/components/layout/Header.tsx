@@ -18,7 +18,7 @@ const Header = () => {
       {/* controls */}
       <div className="flex gap-3">
         {/* temp unit */}
-        <div className="flex items-center gap-1 rounded-4xl py-0.5 px-4 text-gray-600 bg-blue-300 border border-gray-200">
+        <div className="flex items-center gap-1 rounded-4xl py-0.5 px-4 text-white bg-black border border-gray-200">
           <button type="button">°C</button>
           <span className="mx-1">/</span>
           <button type="button">°F</button>
@@ -27,7 +27,7 @@ const Header = () => {
 
         {/* theme toggle */}
         <button
-          className="bg-blue-900 text-yellow-400 border border-gray-200 p-2.5 rounded-full"
+          className="bg-black text-yellow-400 border border-gray-200 p-2.5 rounded-full"
           type="button"
         >
           <Sun className="size-4" />
