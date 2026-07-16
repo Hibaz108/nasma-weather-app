@@ -1,12 +1,20 @@
 import { MapPin, Sun } from "lucide-react";
-
+import { useWeatherStore } from "@/store/weatherStore";
+import { useEffect } from "react";
 const CurrentWeatherCard = () => {
+  const weather = useWeatherStore((state) => state.weather);
+  const fetchWeather = useWeatherStore((state) => state.fetchWeather);
+
+  useEffect(() => {
+    fetchWeather("Oslo");
+  }, []);
+
   return (
     <section className="flex flex-col items-center gap-3 mt-6">
       {/* location */}
       <p className="flex items-center gap-2 text-sm text-gray-600">
         <MapPin className="size-4" />
-        Rome , Italy
+        {` ${weather?.location.name},${weather?.location.country}`}
       </p>
       {/* === location === */}
 
@@ -23,8 +31,12 @@ const CurrentWeatherCard = () => {
       <div className="flex flex-col items-center text-gray-400">
         <p className="text-xl">Sunny</p>
         <div className="flex gap-3 text-sm">
-          <p className="">H: 24°</p>
-          <p className="">L: 35°</p>
+          <p className="">
+            H: {weather?.forecast.forecastday[0].day.mintemp_c}°
+          </p>
+          <p className="">
+            L: {weather?.forecast.forecastday[0].day.maxtemp_c}°
+          </p>
         </div>
       </div>
       {/* === desc & min and max temp === */}
