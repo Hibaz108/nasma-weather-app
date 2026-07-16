@@ -5,6 +5,7 @@ import WeatherHighlights from "./components/weather/WeatherHighlights";
 import HourlyForecast from "./components/weather/HourlyForecast";
 import DailyForecast from "./components/weather/DailyForecast";
 import Conditions from "./components/weather/Conditions";
+import Footer from "./components/layout/Footer";
 function App() {
   return (
     <div className="min-h-svh max-w-4xl mx-auto flex flex-col p-4">
@@ -17,6 +18,7 @@ function App() {
         <DailyForecast />
         <Conditions />
       </div>
+      <Footer />
     </div>
   );
 }
