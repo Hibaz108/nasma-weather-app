@@ -2,7 +2,7 @@ import { Sun } from "lucide-react";
 
 const DailyForecast = () => {
   return (
-    <section className="bg-neutral-300 rounded-2xl text-center mt-3">
+    <section className="bg-neutral-300 rounded-2xl text-center">
       <table className="w-full">
         <thead>
           <tr>
