@@ -9,7 +9,7 @@ const HighlightCard = ({ title, Icon, value, unit }: HighlightCardProps) => {
       </p>
 
       <p className="text-white text-xl font-semibold">
-        {value}
+        {typeof value === "number" ? Math.round(value) : value}
         {unit}
       </p>
     </div>
