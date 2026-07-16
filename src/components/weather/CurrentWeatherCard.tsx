@@ -14,7 +14,7 @@ const CurrentWeatherCard = () => {
       {/* location */}
       <p className="flex items-center gap-2 text-sm text-gray-600">
         <MapPin className="size-4" />
-        {` ${weather?.location.name},${weather?.location.country}`}
+        {` ${weather?.location.name} , ${weather?.location.country}`}
       </p>
       {/* === location === */}
 
