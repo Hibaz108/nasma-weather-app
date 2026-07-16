@@ -1,6 +1,7 @@
 import Header from "./components/layout/Header";
 import CurrentWeatherCard from "./components/weather/CurrentWeatherCard";
 import SearchBar from "./components/weather/SearchBar";
+import WeatherHighlights from "./components/weather/WeatherHighlights";
 import HourlyForecast from "./components/weather/HourlyForecast";
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <SearchBar />
       <CurrentWeatherCard />
+      <WeatherHighlights />
       <HourlyForecast />
     </div>
   );
