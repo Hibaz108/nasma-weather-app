@@ -4,15 +4,10 @@ import SearchBar from "./components/weather/SearchBar";
 import Footer from "./components/layout/Footer";
 import WeatherContent from "./components/weather/WeatherContent";
 //other
-import { useWeatherStore } from "./store/weatherStore";
-import { useEffect } from "react";
+import { useInitialWeather } from "./hooks/useInitialWeather";
 
 function App() {
-  const fetchWeather = useWeatherStore((state) => state.fetchWeather);
-
-  useEffect(() => {
-    fetchWeather("Oslo");
-  }, []);
+  useInitialWeather();
 
   return (
     <div className="min-h-svh max-w-4xl mx-auto flex flex-col p-4">

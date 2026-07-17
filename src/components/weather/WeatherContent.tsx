@@ -14,7 +14,7 @@ const WeatherContent = () => {
 
   if (loading)
     return (
-      <div className="flex w-full items-center justify-center gap-4 mt-4">
+      <div className="flex w-full items-center justify-center gap-4 mt-16">
         <Skeleton className="size-10 shrink-0 rounded-full bg-gray-800" />
         <div className="grid gap-2">
           <Skeleton className="h-4 w-[300px] bg-gray-800" />
