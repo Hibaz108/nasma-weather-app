@@ -7,15 +7,25 @@ export const useWeatherStore = create<WeatherStore>()(
   persist(
     (set) => ({
       weather: null,
+      loading: true,
+      error: null,
       fetchWeather: async (city: string) => {
+        set({
+          loading: true,
+          error: null,
+        });
         try {
           const data = await fetchData(city);
 
           set({
             weather: data,
+            loading: false,
           });
-        } catch (error) {
-          console.error(error);
+        } catch (err) {
+          set({
+            loading: false,
+            error: err instanceof Error ? err.message : "Something went wrong",
+          });
         }
       },
     }),

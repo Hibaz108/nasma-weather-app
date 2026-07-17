@@ -72,5 +72,7 @@ export type WeatherType = {
 
 export type WeatherStore = {
   weather: WeatherType | null;
+  loading: boolean;
+  error: string | null;
   fetchWeather: (city: string) => Promise<void>;
 };

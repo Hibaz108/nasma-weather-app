@@ -1,13 +1,8 @@
 import { MapPin } from "lucide-react";
 import { useWeatherStore } from "@/store/weatherStore";
-import { useEffect } from "react";
+
 const CurrentWeatherCard = () => {
   const weather = useWeatherStore((state) => state.weather);
-  const fetchWeather = useWeatherStore((state) => state.fetchWeather);
-
-  useEffect(() => {
-    fetchWeather("Oslo");
-  }, []);
 
   return (
     <section className="flex flex-col items-center gap-3 mt-6">
