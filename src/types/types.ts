@@ -10,6 +10,8 @@ export type HighlightCardProps = {
 export type HourCardProps = {
   title: string;
   temp: number;
+  url: string;
+  alt: string;
 };
 
 export type WeatherType = {

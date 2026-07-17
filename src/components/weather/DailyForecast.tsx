@@ -1,6 +1,8 @@
-import { Sun } from "lucide-react";
+import { useWeatherStore } from "@/store/weatherStore";
 
 const DailyForecast = () => {
+  const weather = useWeatherStore((state) => state.weather);
+
   return (
     <section className="bg-neutral-300 rounded-2xl text-center">
       <table className="w-full">
@@ -16,38 +18,29 @@ const DailyForecast = () => {
         </thead>
 
         <tbody className="[&_td]:p-2 divide-y divide-gray-400">
-          <tr>
-            <td className="font-semibold">Mon</td>
-            <td className="flex justify-center items-center">
-              <Sun className="size-5" />
-            </td>
-            <td className="text-gray-500">24°</td>
-            <td className="text-gray-500">33°</td>
-          </tr>
-          <tr>
-            <td className="font-semibold">Mon</td>
-            <td className="flex justify-center items-center">
-              <Sun className="size-5" />
-            </td>
-            <td className="text-gray-500">24°</td>
-            <td className="text-gray-500">33°</td>
-          </tr>
-          <tr>
-            <td className="font-semibold">Mon</td>
-            <td className="flex justify-center items-center">
-              <Sun className="size-5" />
-            </td>
-            <td className="text-gray-500">24°</td>
-            <td className="text-gray-500">33°</td>
-          </tr>
-          <tr>
-            <td className="font-semibold">Mon</td>
-            <td className="flex justify-center items-center">
-              <Sun className="size-5" />
-            </td>
-            <td className="text-gray-500">24°</td>
-            <td className="text-gray-500">33°</td>
-          </tr>
+          {weather?.forecast.forecastday.slice(1).map((day) => (
+            <tr key={day.date}>
+              <td className="font-semibold">
+                {new Date(day.date).toLocaleDateString("en-US", {
+                  weekday: "short",
+                })}
+              </td>
+              <td className="flex justify-center items-center">
+                <img
+                  src={`https:${day.day.condition.icon}`}
+                  alt={day.day.condition.text}
+                  className="size-10"
+                  draggable={false}
+                />
+              </td>
+              <td className="text-gray-500">
+                {Math.round(day.day.mintemp_c)}°
+              </td>
+              <td className="text-gray-500">
+                {Math.round(day.day.maxtemp_c)}°
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </section>
