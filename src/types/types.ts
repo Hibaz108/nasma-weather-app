@@ -5,11 +5,14 @@ export type HighlightCardProps = {
   Icon: LucideIcon;
   value: number | string;
   unit?: string;
+  details?: string;
 };
 
 export type HourCardProps = {
   title: string;
   temp: number;
+  url: string;
+  alt: string;
 };
 
 export type WeatherType = {
@@ -44,6 +47,7 @@ export type WeatherType = {
         maxtemp_f: number;
         mintemp_c: number;
         mintemp_f: number;
+        daily_chance_of_rain: number;
         condition: {
           icon: string;
           text: string;
@@ -68,5 +72,7 @@ export type WeatherType = {
 
 export type WeatherStore = {
   weather: WeatherType | null;
+  loading: boolean;
+  error: string | null;
   fetchWeather: (city: string) => Promise<void>;
 };

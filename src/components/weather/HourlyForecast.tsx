@@ -1,6 +1,20 @@
 import HourCard from "./HourCard";
+import { useWeatherStore } from "@/store/weatherStore";
 
 const HourlyForecast = () => {
+  const weather = useWeatherStore((state) => state.weather);
+  const currentHour = weather
+    ? new Date(weather.location.localtime).getHours()
+    : 0;
+  const hoursToday = weather?.forecast.forecastday[0].hour;
+  const hoursTomorrow = weather?.forecast.forecastday[1].hour;
+  const nextHours = [
+    ...(hoursToday?.slice(currentHour) || []),
+    ...(hoursTomorrow || []),
+  ].slice(0, 7);
+
+  //--------------------------------------------------------------------------
+
   return (
     <section className="bg-black mt-4 p-5 space-y-4 rounded-2xl shadow-xl ">
       <div className="flex justify-between ">
@@ -10,13 +24,15 @@ const HourlyForecast = () => {
 
       {/* hour cards container */}
       <div className="flex gap-2 overflow-x-auto">
-        <HourCard title="Now" temp={25} />
-        <HourCard title="13:00" temp={26} />
-        <HourCard title="14:00" temp={28} />
-        <HourCard title="15:00" temp={30} />
-        <HourCard title="16:00" temp={27} />
-        <HourCard title="17:00" temp={26} />
-        <HourCard title="18:00" temp={26} />
+        {nextHours.map((hour, index) => (
+          <HourCard
+            key={hour.time}
+            title={index === 0 ? "Now" : hour.time.split(" ")[1]}
+            temp={hour.temp_c}
+            url={`https:${hour.condition.icon}`}
+            alt={hour.condition.text}
+          />
+        ))}
       </div>
       {/* === hour cards container === */}
     </section>
