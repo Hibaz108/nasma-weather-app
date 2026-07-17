@@ -5,6 +5,7 @@ export type HighlightCardProps = {
   Icon: LucideIcon;
   value: number | string;
   unit?: string;
+  details?: string;
 };
 
 export type HourCardProps = {
@@ -46,6 +47,7 @@ export type WeatherType = {
         maxtemp_f: number;
         mintemp_c: number;
         mintemp_f: number;
+        daily_chance_of_rain: number;
         condition: {
           icon: string;
           text: string;
