@@ -28,6 +28,8 @@ export const useWeatherStore = create<WeatherStore>()(
           });
         }
       },
+      unit: "C",
+      setUnit: (unit) => set({ unit }),
     }),
 
     {

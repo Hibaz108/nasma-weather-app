@@ -75,4 +75,6 @@ export type WeatherStore = {
   loading: boolean;
   error: string | null;
   fetchWeather: (city: string) => Promise<void>;
+  unit: "C" | "F";
+  setUnit: (unit: "C" | "F") => void;
 };
