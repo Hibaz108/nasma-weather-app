@@ -30,10 +30,19 @@ export const useWeatherStore = create<WeatherStore>()(
       },
       unit: "C",
       setUnit: (unit) => set({ unit }),
+      theme: "light",
+      toggleTheme: () =>
+        set((state) => ({
+          theme: state.theme === "light" ? "dark" : "light",
+        })),
     }),
 
     {
       name: "weather-storage",
+      partialize: (state) => ({
+        unit: state.unit,
+        theme: state.theme,
+      }),
     },
   ),
 );

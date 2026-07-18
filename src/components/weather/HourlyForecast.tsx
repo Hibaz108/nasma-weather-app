@@ -16,10 +16,10 @@ const HourlyForecast = () => {
   //--------------------------------------------------------------------------
 
   return (
-    <section className="bg-black mt-4 p-5 space-y-4 rounded-2xl shadow-xl ">
+    <section className="bg-container mt-4 p-5 space-y-4 rounded-2xl shadow-xl ">
       <div className="flex justify-between ">
-        <p className="text-gray-700 font-bold">Today</p>
-        <p className="text-xs text-gray-500 font-medium">Next 6 hours</p>
+        <p className="text-foreground font-bold">Today</p>
+        <p className="text-xs text-muted-foreground font-medium">Next 6 hours</p>
       </div>
 
       {/* hour cards container */}

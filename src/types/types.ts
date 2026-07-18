@@ -78,4 +78,6 @@ export type WeatherStore = {
   fetchWeather: (city: string) => Promise<void>;
   unit: "C" | "F";
   setUnit: (unit: "C" | "F") => void;
+  theme: "dark" | "light";
+  toggleTheme: () => void;
 };

@@ -29,14 +29,14 @@ const CurrentWeatherCard = () => {
   return (
     <section className="flex flex-col items-center gap-3 mt-6">
       {/* location */}
-      <p className="flex items-center gap-2 text-sm text-gray-600">
+      <p className="flex items-center gap-2 text-sm text-muted-foreground">
         <MapPin className="size-4" />
         {` ${weather?.location.name} , ${weather?.location.country}`}
       </p>
       {/* === location === */}
 
       {/* current temp & icon */}
-      <div className="flex items-center text-black">
+      <div className="flex items-center text-foreground">
         {weather && (
           <img
             src={`https:${weather.current.condition.icon}`}
@@ -53,9 +53,9 @@ const CurrentWeatherCard = () => {
       {/* === current temp & icon === */}
 
       {/* desc & min and max temp */}
-      <div className="flex flex-col items-center text-gray-400">
+      <div className="flex flex-col items-center text-foreground">
         <p className="text-xl">{weather?.current.condition.text}</p>
-        <div className="flex gap-3 text-sm">
+        <div className="flex gap-3 text-sm text-muted-foreground">
           <p>
             H:
             {maxTemp}°

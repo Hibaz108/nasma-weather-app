@@ -25,10 +25,10 @@ const Conditions = () => {
     unit === "C" ? weather?.current.feelslike_c : weather?.current.feelslike_f;
 
   return (
-    <section className="bg-black p-5 space-y-3 rounded-2xl">
-      <h3 className="text-white text-lg font-bold ">Conditions</h3>
+    <section className="bg-container p-5 space-y-3 rounded-2xl">
+      <h3 className="text-foreground text-lg font-bold ">Conditions</h3>
 
-      <div className="flex items-center justify-around gap-3 p-3 bg-gray-800 text-white rounded-2xl ">
+      <div className="flex items-center justify-around gap-3 p-3 bg-card rounded-2xl ">
         {/* left */}
         <div
           className={`flex flex-col justify-center items-center h-22 w-23 p-2 border-8 ${uvLevel.borderColor} rounded-full`}
