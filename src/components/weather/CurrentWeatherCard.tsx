@@ -3,6 +3,28 @@ import { useWeatherStore } from "@/store/weatherStore";
 
 const CurrentWeatherCard = () => {
   const weather = useWeatherStore((state) => state.weather);
+  const unit = useWeatherStore((state) => state.unit);
+  const currentTemp = weather
+    ? Math.round(unit === "F" ? weather.current.temp_f : weather.current.temp_c)
+    : "--";
+
+  const maxTemp = weather
+    ? Math.round(
+        unit === "F"
+          ? weather?.forecast.forecastday[0].day.maxtemp_f
+          : weather?.forecast.forecastday[0].day.maxtemp_c,
+      )
+    : "--";
+
+  const minTemp = weather
+    ? Math.round(
+        unit === "F"
+          ? weather?.forecast.forecastday[0].day.mintemp_f
+          : weather?.forecast.forecastday[0].day.mintemp_c,
+      )
+    : "--";
+
+  //---------------------------------------------------------------------------
 
   return (
     <section className="flex flex-col items-center gap-3 mt-6">
@@ -25,7 +47,7 @@ const CurrentWeatherCard = () => {
         )}
 
         <p className="text-7xl md:text-8xl lg:text-9xl font-bold">
-          {Math.round(weather?.current.temp_c ?? 0)}°
+          {currentTemp}°
         </p>
       </div>
       {/* === current temp & icon === */}
@@ -36,11 +58,11 @@ const CurrentWeatherCard = () => {
         <div className="flex gap-3 text-sm">
           <p>
             H:
-            {Math.round(weather?.forecast.forecastday[0].day.mintemp_c ?? 0)}°
+            {maxTemp}°
           </p>
           <p>
             L:
-            {Math.round(weather?.forecast.forecastday[0].day.maxtemp_c ?? 0)}°
+            {minTemp}°
           </p>
         </div>
       </div>

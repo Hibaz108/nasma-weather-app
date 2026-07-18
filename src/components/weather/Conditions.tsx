@@ -19,8 +19,10 @@ const Conditions = () => {
   const chanceOfRain =
     weather?.forecast.forecastday[0].day.daily_chance_of_rain;
 
-  const temp = weather?.current.temp_c;
-  const feelsLike = weather?.current.feelslike_c;
+  const unit = useWeatherStore((state) => state.unit);
+  const temp = unit === "C" ? weather?.current.temp_c : weather?.current.temp_f;
+  const feelsLike =
+    unit === "C" ? weather?.current.feelslike_c : weather?.current.feelslike_f;
 
   return (
     <section className="bg-black p-5 space-y-3 rounded-2xl">
@@ -56,7 +58,7 @@ const Conditions = () => {
         <HighlightCard
           title="Feels like"
           Icon={Thermometer}
-          value={weather?.current.feelslike_c ?? "--"}
+          value={feelsLike ?? "--"}
           unit="°"
           details={getFeelsLikeDescription(temp, feelsLike)}
         />

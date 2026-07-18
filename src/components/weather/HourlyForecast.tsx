@@ -28,7 +28,8 @@ const HourlyForecast = () => {
           <HourCard
             key={hour.time}
             title={index === 0 ? "Now" : hour.time.split(" ")[1]}
-            temp={hour.temp_c}
+            temp_c={hour.temp_c}
+            temp_f={hour.temp_f}
             url={`https:${hour.condition.icon}`}
             alt={hour.condition.text}
           />

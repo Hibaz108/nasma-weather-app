@@ -2,6 +2,7 @@ import { useWeatherStore } from "@/store/weatherStore";
 
 const DailyForecast = () => {
   const weather = useWeatherStore((state) => state.weather);
+  const unit = useWeatherStore((state) => state.unit);
 
   return (
     <section className="bg-neutral-300 rounded-2xl text-center">
@@ -34,10 +35,16 @@ const DailyForecast = () => {
                 />
               </td>
               <td className="text-gray-500">
-                {Math.round(day.day.mintemp_c)}°
+                {unit === "C"
+                  ? Math.round(day.day.mintemp_c)
+                  : Math.round(day.day.mintemp_f)}
+                °
               </td>
               <td className="text-gray-500">
-                {Math.round(day.day.maxtemp_c)}°
+                {unit === "C"
+                  ? Math.round(day.day.maxtemp_c)
+                  : Math.round(day.day.maxtemp_f)}
+                °
               </td>
             </tr>
           ))}

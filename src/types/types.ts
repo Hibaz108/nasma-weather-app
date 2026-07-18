@@ -10,7 +10,8 @@ export type HighlightCardProps = {
 
 export type HourCardProps = {
   title: string;
-  temp: number;
+  temp_c: number;
+  temp_f: number;
   url: string;
   alt: string;
 };
