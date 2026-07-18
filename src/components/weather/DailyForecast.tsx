@@ -2,14 +2,15 @@ import { useWeatherStore } from "@/store/weatherStore";
 
 const DailyForecast = () => {
   const weather = useWeatherStore((state) => state.weather);
+  const unit = useWeatherStore((state) => state.unit);
 
   return (
-    <section className="bg-neutral-300 rounded-2xl text-center">
+    <section className="bg-container rounded-2xl text-center">
       <table className="w-full">
         <thead>
           <tr>
             <th
-              className="py-4 px-6 text-left font-bold text-gray-900"
+              className="py-4 px-6 text-left font-bold text-foreground"
               colSpan={4}
             >
               7-day forecast
@@ -17,7 +18,7 @@ const DailyForecast = () => {
           </tr>
         </thead>
 
-        <tbody className="[&_td]:p-2 divide-y divide-gray-400">
+        <tbody className="[&_td]:p-2 divide-y divide-border">
           {weather?.forecast.forecastday.slice(1).map((day) => (
             <tr key={day.date}>
               <td className="font-semibold">
@@ -33,11 +34,17 @@ const DailyForecast = () => {
                   draggable={false}
                 />
               </td>
-              <td className="text-gray-500">
-                {Math.round(day.day.mintemp_c)}°
+              <td className="text-muted-foreground">
+                {unit === "C"
+                  ? Math.round(day.day.mintemp_c)
+                  : Math.round(day.day.mintemp_f)}
+                °
               </td>
-              <td className="text-gray-500">
-                {Math.round(day.day.maxtemp_c)}°
+              <td className="text-muted-foreground">
+                {unit === "C"
+                  ? Math.round(day.day.maxtemp_c)
+                  : Math.round(day.day.maxtemp_f)}
+                °
               </td>
             </tr>
           ))}

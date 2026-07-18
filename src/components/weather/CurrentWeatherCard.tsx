@@ -3,18 +3,40 @@ import { useWeatherStore } from "@/store/weatherStore";
 
 const CurrentWeatherCard = () => {
   const weather = useWeatherStore((state) => state.weather);
+  const unit = useWeatherStore((state) => state.unit);
+  const currentTemp = weather
+    ? Math.round(unit === "F" ? weather.current.temp_f : weather.current.temp_c)
+    : "--";
+
+  const maxTemp = weather
+    ? Math.round(
+        unit === "F"
+          ? weather?.forecast.forecastday[0].day.maxtemp_f
+          : weather?.forecast.forecastday[0].day.maxtemp_c,
+      )
+    : "--";
+
+  const minTemp = weather
+    ? Math.round(
+        unit === "F"
+          ? weather?.forecast.forecastday[0].day.mintemp_f
+          : weather?.forecast.forecastday[0].day.mintemp_c,
+      )
+    : "--";
+
+  //---------------------------------------------------------------------------
 
   return (
     <section className="flex flex-col items-center gap-3 mt-6">
       {/* location */}
-      <p className="flex items-center gap-2 text-sm text-gray-600">
+      <p className="flex items-center gap-2 text-sm text-muted-foreground">
         <MapPin className="size-4" />
         {` ${weather?.location.name} , ${weather?.location.country}`}
       </p>
       {/* === location === */}
 
       {/* current temp & icon */}
-      <div className="flex items-center text-black">
+      <div className="flex items-center text-foreground">
         {weather && (
           <img
             src={`https:${weather.current.condition.icon}`}
@@ -25,22 +47,22 @@ const CurrentWeatherCard = () => {
         )}
 
         <p className="text-7xl md:text-8xl lg:text-9xl font-bold">
-          {Math.round(weather?.current.temp_c ?? 0)}°
+          {currentTemp}°
         </p>
       </div>
       {/* === current temp & icon === */}
 
       {/* desc & min and max temp */}
-      <div className="flex flex-col items-center text-gray-400">
+      <div className="flex flex-col items-center text-foreground">
         <p className="text-xl">{weather?.current.condition.text}</p>
-        <div className="flex gap-3 text-sm">
+        <div className="flex gap-3 text-sm text-muted-foreground">
           <p>
             H:
-            {Math.round(weather?.forecast.forecastday[0].day.mintemp_c ?? 0)}°
+            {maxTemp}°
           </p>
           <p>
             L:
-            {Math.round(weather?.forecast.forecastday[0].day.maxtemp_c ?? 0)}°
+            {minTemp}°
           </p>
         </div>
       </div>

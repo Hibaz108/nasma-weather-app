@@ -16,10 +16,10 @@ const HourlyForecast = () => {
   //--------------------------------------------------------------------------
 
   return (
-    <section className="bg-black mt-4 p-5 space-y-4 rounded-2xl shadow-xl ">
+    <section className="bg-container mt-4 p-5 space-y-4 rounded-2xl shadow-xl ">
       <div className="flex justify-between ">
-        <p className="text-gray-700 font-bold">Today</p>
-        <p className="text-xs text-gray-500 font-medium">Next 6 hours</p>
+        <p className="text-foreground font-bold">Today</p>
+        <p className="text-xs text-muted-foreground font-medium">Next 6 hours</p>
       </div>
 
       {/* hour cards container */}
@@ -28,7 +28,8 @@ const HourlyForecast = () => {
           <HourCard
             key={hour.time}
             title={index === 0 ? "Now" : hour.time.split(" ")[1]}
-            temp={hour.temp_c}
+            temp_c={hour.temp_c}
+            temp_f={hour.temp_f}
             url={`https:${hour.condition.icon}`}
             alt={hour.condition.text}
           />

@@ -10,7 +10,8 @@ export type HighlightCardProps = {
 
 export type HourCardProps = {
   title: string;
-  temp: number;
+  temp_c: number;
+  temp_f: number;
   url: string;
   alt: string;
 };
@@ -75,4 +76,8 @@ export type WeatherStore = {
   loading: boolean;
   error: string | null;
   fetchWeather: (city: string) => Promise<void>;
+  unit: "C" | "F";
+  setUnit: (unit: "C" | "F") => void;
+  theme: "dark" | "light";
+  toggleTheme: () => void;
 };

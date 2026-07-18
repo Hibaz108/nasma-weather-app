@@ -44,7 +44,7 @@ const SearchBar = () => {
         />
         <InputGroupAddon align="inline-start">
           <button type="button" aria-label="Search" onClick={handleSearch}>
-            <SearchIcon className="text-gray-400 size-5" />
+            <SearchIcon className="text-muted-foreground size-5" />
           </button>
         </InputGroupAddon>
 
@@ -53,7 +53,8 @@ const SearchBar = () => {
           {cities.map((item) => (
             <button
               key={item}
-              className="px-2 py-1 bg-black text-white font-semibold text-xs rounded-xl transition-colors"
+              className={`${selectedCity === item ? "bg-container text-foreground" : "bg-transparent text-muted-foreground hover:bg-container"}
+             px-2 py-1 font-semibold text-xs rounded-xl transition-colors`}
               type="button"
               onClick={() => {
                 setSelectedCity(item);
